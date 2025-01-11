@@ -2,19 +2,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String testString = "Hello World!";
+        String testString = "race car";
         int testIndex = 4;
         char testChar = 'e';
-        reverseString(testString);
-        lengthOfString(testString);
-        accessCharacter(testString, testIndex);
-        changeToLowercase(testString);
-        changeToUppercase(testString);
-        trimSpaces(testString);
-        replaceCharacter(testString, testIndex, testChar);
-        repeatString(testString, testIndex); //the index here is used for the amount of times repeated parameter ;)
-        compareStrings(testString, "I love Java!");
-
+        //reverseString(testString);
+        //lengthOfString(testString);
+        //accessCharacter(testString, testIndex);
+        //changeToLowercase(testString);
+        //changeToUppercase(testString);
+        //trimSpaces(testString);
+        //replaceCharacter(testString, testIndex, testChar);
+        //repeatString(testString, testIndex); //the index here is used for the amount of times repeated parameter ;)
+        //compareStrings(testString, "I love Java!");
+        checkForPalindromes("Race car");
+        checkForPalindromes(testString);
     }
 
 
@@ -38,7 +39,6 @@ public class Main {
         System.out.println(new String(in));
     }
 
-
     public static void lengthOfString(String text) {
         System.out.println(text.length());
     }
@@ -59,7 +59,7 @@ public class Main {
         text = text.replace(" ", "");
         System.out.println(text);
     }
-    
+
     public static void replaceCharacter(String text, int index, char character) {
         StringBuilder newString = new StringBuilder(text);
         newString.setCharAt(index, character);
@@ -75,5 +75,30 @@ public class Main {
 
     public static void compareStrings(String text1, String text2) {
         System.out.println(text1.equals(text2));
+    }
+
+    public static void checkForPalindromes(String palindrome) { //for example race car backwards is also race car
+        palindrome = palindrome.replace(" ", "");
+        palindrome = palindrome.replace(",", "");
+
+        char[] in = palindrome.toCharArray();
+        int begin = 0; // Index position of the beginning
+        int end = in.length - 1; // Index position of the end
+        char temp;
+
+        //Swap characters until the middle of the array is reached
+        while (end > begin) {
+            temp = in[begin];
+            in[begin] = in[end];
+            in[end] = temp; //Ensure you also set in[end] to temp
+            end--;
+            begin++;
+        }
+
+        if (palindrome.equalsIgnoreCase(new String(in))) {
+            System.out.println(true);
+        } else {
+            System.out.println(false);
+        }
     }
 }
